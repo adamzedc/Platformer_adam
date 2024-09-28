@@ -20,12 +20,14 @@ public class PlayerMovement : MonoBehaviour
     public float walkSpeed;
     public float sprintSpeed;
     public float slideSpeed;
+    public float fallSpeed;
 
     private float desiredMoveSpeed;
     private float lastDesiredMoveSpeed;
 
     public float speedIncreaseMultiplier;
     public float slopeIncreaseMultiplier;
+    public float fallIncreaseMultiplier;
 
     public float speedRateOfIncrease;
     public float speedRateOfDecrease;
@@ -73,11 +75,13 @@ public class PlayerMovement : MonoBehaviour
     Vector3 moveDirection;
 
     public MovementState state;
+    private MovementState lastState;
     public enum MovementState {
         walking,
         sprinting,
         crouching,
         sliding,
+        falling,
         air
     
     }
@@ -104,15 +108,26 @@ public class PlayerMovement : MonoBehaviour
         if (sliding && grounded)
         {
             debugState.text = "Sliding";
-            Debug.Log("WE are sliding");
-
             state = MovementState.sliding;
 
             if (OnSlope() && rb.velocity.y < 0.1f && grounded)
             {
-                desiredMoveSpeed = slideSpeed;
+                desiredMoveSpeed = fallSpeed;
             }
             else
+            {
+                desiredMoveSpeed = sprintSpeed;
+            }
+        }
+        //Mode - Falling
+        else if(!grounded && rb.velocity.y < 0.1f)
+        {
+            debugState.text = "Falling";
+            state = MovementState.falling;
+
+            desiredMoveSpeed = slideSpeed;
+            
+            if(Physics.Raycast(rb.position,Vector3.down, playerHeight * 0.5f + 2f, whatIsGround))
             {
                 desiredMoveSpeed = sprintSpeed;
             }
@@ -144,10 +159,13 @@ public class PlayerMovement : MonoBehaviour
             debugState.text = "Air";
             state = MovementState.air;
 
-            if(rb.velocity.y < 0.1f)
+            if (desiredMoveSpeed < sprintSpeed)
             {
-                //Need to change this part to make the slide epic
-                desiredMoveSpeed = 50f;
+                desiredMoveSpeed = walkSpeed;
+            }
+            else
+            {
+                desiredMoveSpeed = sprintSpeed;
             }
         }
 
@@ -155,7 +173,7 @@ public class PlayerMovement : MonoBehaviour
         // We are checking if we are only transitioning from walking -> sprinting or did we build up a large momentum
         // walking -> sprinting has a difference of 3 hence the greater than 4 check
         //IF we built up momentum then we want to slowly decrease the speed rather than instantly
-        if (Mathf.Abs(desiredMoveSpeed - lastDesiredMoveSpeed) > 4 && moveSpeed != 0)
+        if ((Mathf.Abs(desiredMoveSpeed - lastDesiredMoveSpeed) > 4 && moveSpeed != 0) || (state == MovementState.sliding && lastState == MovementState.air))
         {
             Debug.Log("We are lerping");
             StopAllCoroutines();
@@ -166,6 +184,7 @@ public class PlayerMovement : MonoBehaviour
             moveSpeed = desiredMoveSpeed;
         }
 
+        lastState = state;
         lastDesiredMoveSpeed = desiredMoveSpeed;
     }
 
@@ -197,6 +216,12 @@ public class PlayerMovement : MonoBehaviour
                 float slopeAngle = Vector3.Angle(Vector3.up, slopeHit.normal);
                 float slopeAngleIncrease = 1 + (slopeAngle / 90f);
                 time += Time.deltaTime * speedIncreaseMultiplier * slopeIncreaseMultiplier * slopeAngleIncrease;
+            }
+            else if (state == MovementState.falling) {
+                float fallSpeed = rb.velocity.y;
+                float fallSpeedIncrease = 1+Mathf.Abs(fallSpeed/90f);
+                Debug.Log(fallSpeedIncrease);
+                time += Time.deltaTime * speedIncreaseMultiplier * fallSpeedIncrease * fallIncreaseMultiplier;
             }
             else
             {

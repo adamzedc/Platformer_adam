@@ -5642,6 +5642,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1627451806}
     - target: {fileID: 7948665524351177484, guid: ec3352d5b8d2cb442997aea6ea97f01a, type: 3}
+      propertyPath: fallSpeed
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 7948665524351177484, guid: ec3352d5b8d2cb442997aea6ea97f01a, type: 3}
       propertyPath: debugSpeed
       value: 
       objectReference: {fileID: 2028854854}
@@ -5653,6 +5657,10 @@ PrefabInstance:
       propertyPath: debugGrounded
       value: 
       objectReference: {fileID: 498413551}
+    - target: {fileID: 7948665524351177484, guid: ec3352d5b8d2cb442997aea6ea97f01a, type: 3}
+      propertyPath: fallIncreaseMultiplier
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 8898951231868937773, guid: ec3352d5b8d2cb442997aea6ea97f01a, type: 3}
       propertyPath: m_Name
       value: Player
