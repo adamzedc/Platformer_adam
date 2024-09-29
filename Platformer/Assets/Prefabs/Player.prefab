@@ -205,6 +205,7 @@ GameObject:
   - component: {fileID: 829531395370842875}
   - component: {fileID: 7948665524351177484}
   - component: {fileID: 3061306562977996431}
+  - component: {fileID: 1406163435877802842}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -275,10 +276,12 @@ MonoBehaviour:
   walkSpeed: 7
   sprintSpeed: 10
   slideSpeed: 30
+  fallSpeed: 20
   speedIncreaseMultiplier: 1.5
   slopeIncreaseMultiplier: 2.5
+  fallIncreaseMultiplier: 3
   speedRateOfIncrease: 1
-  speedRateOfDecrease: 4
+  speedRateOfDecrease: 3
   groundDrag: 5
   jumpForce: 12
   jumpCooldown: 0.25
@@ -318,3 +321,20 @@ MonoBehaviour:
   slideForce: 200
   slideYScale: 0.5
   slideKey: 306
+--- !u!114 &1406163435877802842
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8898951231868937773}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41c96541ca753c746ad7be529de72eca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerHeight: 2
+  whatIsDanger:
+    serializedVersion: 2
+    m_Bits: 4096
+  debugDeadState: {fileID: 0}
