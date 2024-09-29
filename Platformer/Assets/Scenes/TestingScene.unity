@@ -5658,6 +5658,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 498413551}
     - target: {fileID: 7948665524351177484, guid: ec3352d5b8d2cb442997aea6ea97f01a, type: 3}
+      propertyPath: speedRateOfDecrease
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7948665524351177484, guid: ec3352d5b8d2cb442997aea6ea97f01a, type: 3}
       propertyPath: fallIncreaseMultiplier
       value: 3
       objectReference: {fileID: 0}
