@@ -1,1 +1,1 @@
-C:\Users\barcy\Documents\GitHub\Platformer\Platformer
+/Users/aivarasz/Desktop/GameDev/Platformer/Platformer
