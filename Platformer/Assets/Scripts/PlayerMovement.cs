@@ -33,6 +33,7 @@ public class PlayerMovement : MonoBehaviour
     public float speedRateOfDecrease;
 
     public float groundDrag;
+    public float airDrag;
 
     [Header("Jumping")]
     public float jumpForce;
@@ -87,6 +88,7 @@ public class PlayerMovement : MonoBehaviour
     }
 
     public bool sliding;
+    public bool inWater;
 
 
     void Start()
@@ -120,7 +122,7 @@ public class PlayerMovement : MonoBehaviour
             }
         }
         //Mode - Falling
-        else if(!grounded && rb.velocity.y < 0.1f)
+        else if(!grounded && rb.velocity.y < 0.1f && !inWater)
         {
             debugState.text = "Falling";
             state = MovementState.falling;
@@ -294,7 +296,7 @@ public class PlayerMovement : MonoBehaviour
             rb.drag = groundDrag;
         }
         else {
-            rb.drag = 0;
+            rb.drag = airDrag;
         }
 
     }

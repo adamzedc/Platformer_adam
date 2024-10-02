@@ -3057,6 +3057,12 @@ MonoBehaviour:
     m_Bits: 16
   rb: {fileID: 1643047781}
   pm: {fileID: 1643047785}
+  sl: {fileID: 1643047787}
+  waterGroundDrag: 10
+  waterAirDrag: 2
+  waterGravity: 9.81
+  waterWalkSpeed: 0
+  waterSprintSpeed: 0
 --- !u!114 &1643047785 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7948665524351177484, guid: ec3352d5b8d2cb442997aea6ea97f01a, type: 3}
@@ -3066,6 +3072,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 41dc20df6b25adc47b99e38011addb5e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1643047787 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3061306562977996431, guid: ec3352d5b8d2cb442997aea6ea97f01a, type: 3}
+  m_PrefabInstance: {fileID: 4639842939480701533}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 818758524}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eff1ac80abe760c438cca91e233c0c5b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &1691113863 stripped
