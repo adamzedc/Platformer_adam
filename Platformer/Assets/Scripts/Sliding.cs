@@ -79,7 +79,7 @@ public class Sliding : MonoBehaviour
         //Changing the Y scale so that it looks like we are crouched down sliding
         playerObj.localScale = new Vector3(playerObj.localScale.x, slideYScale, playerObj.localScale.z);
         
-        rb.AddForce(Vector3.down * 5f, ForceMode.Impulse);
+        rb.AddForce(Vector3.down * 100f, ForceMode.Impulse);
 
         slideTimer = maxSlideTime;
     }
@@ -116,12 +116,6 @@ public class Sliding : MonoBehaviour
             StopSlide();
         }
     }
-
-    //private void updateSlideMultiplier() {
-    //        Debug.Log("Highest slide multiplier = " + highestMultiplier);
-    //        slideMultiplier = 1 + ((rb.velocity.magnitude - 10f) * yToXConversionMultiplier);
-    //        if(slideMultiplier > highestMultiplier) highestMultiplier = slideMultiplier;
-    //}
 
     private void StopSlide()
     {

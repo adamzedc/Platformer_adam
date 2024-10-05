@@ -372,6 +372,7 @@
 "Assets/Scripts/Sliding.cs"
 "Assets/Scripts/Timer.cs"
 "Assets/Scripts/Water.cs"
+"Assets/Scripts/WinCondition.cs"
 -langversion:9.0
 /deterministic
 /optimize+
