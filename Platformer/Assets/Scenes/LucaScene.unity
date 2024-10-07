@@ -2422,7 +2422,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2849871311764698122, guid: 1c7b900d1af7c434781cc638353d84cf, type: 3}
       propertyPath: m_Layer
-      value: 9
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2849871311764698122, guid: 1c7b900d1af7c434781cc638353d84cf, type: 3}
       propertyPath: m_TagString
@@ -2482,7 +2482,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7010154428795852168, guid: 1c7b900d1af7c434781cc638353d84cf, type: 3}
       propertyPath: m_Layer
-      value: 9
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7010154428795852168, guid: 1c7b900d1af7c434781cc638353d84cf, type: 3}
       propertyPath: m_TagString
@@ -4132,7 +4132,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2849871311764698122, guid: 1c7b900d1af7c434781cc638353d84cf, type: 3}
       propertyPath: m_Layer
-      value: 9
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2849871311764698122, guid: 1c7b900d1af7c434781cc638353d84cf, type: 3}
       propertyPath: m_TagString
@@ -4192,7 +4192,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7010154428795852168, guid: 1c7b900d1af7c434781cc638353d84cf, type: 3}
       propertyPath: m_Layer
-      value: 9
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -10134,7 +10134,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2849871311764698122, guid: 1c7b900d1af7c434781cc638353d84cf, type: 3}
       propertyPath: m_Layer
-      value: 9
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2849871311764698122, guid: 1c7b900d1af7c434781cc638353d84cf, type: 3}
       propertyPath: m_TagString
@@ -10194,7 +10194,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7010154428795852168, guid: 1c7b900d1af7c434781cc638353d84cf, type: 3}
       propertyPath: m_Layer
-      value: 9
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
