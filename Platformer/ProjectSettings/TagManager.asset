@@ -8,6 +8,7 @@ TagManager:
   - win
   - player
   - MovingPlatform
+  - enemy
   layers:
   - Default
   - TransparentFX

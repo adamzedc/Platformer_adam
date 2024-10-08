@@ -366,9 +366,11 @@
 -analyzer:"C:/Program Files/Unity/Hub/Editor/2022.3.47f1/Editor/Data/Tools/Unity.SourceGenerators/Unity.Properties.SourceGenerator.dll"
 -analyzer:"C:/Program Files/Unity/Hub/Editor/2022.3.47f1/Editor/Data/Tools/Unity.SourceGenerators/Unity.SourceGenerators.dll"
 "Assets/Scripts/BouncePad.cs"
+"Assets/Scripts/Bullet.cs"
 "Assets/Scripts/Death.cs"
 "Assets/Scripts/EffectController.cs"
 "Assets/Scripts/EventManager.cs"
+"Assets/Scripts/GunFollowCamera.cs"
 "Assets/Scripts/MoveCamera.cs"
 "Assets/Scripts/PlayerCam.cs"
 "Assets/Scripts/PlayerMovement.cs"
@@ -376,6 +378,7 @@
 "Assets/Scripts/Timer.cs"
 "Assets/Scripts/TrainSpawner.cs"
 "Assets/Scripts/Water.cs"
+"Assets/Scripts/Weapon.cs"
 "Assets/Scripts/WinCondition.cs"
 -langversion:9.0
 /deterministic
