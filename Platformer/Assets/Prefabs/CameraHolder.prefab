@@ -142,6 +142,7 @@ GameObject:
   - component: {fileID: 7734826417069294877}
   - component: {fileID: 5763064867727506611}
   - component: {fileID: 4977449473601308606}
+  - component: {fileID: 6765991127807337483}
   m_Layer: 0
   m_Name: PlayerCam
   m_TagString: MainCamera
@@ -238,8 +239,74 @@ MonoBehaviour:
   orientation: {fileID: 0}
   rb: {fileID: 0}
   cam: {fileID: 7734826417069294877}
-  sensX: 400
-  sensY: 400
+  sensX: 25
+  sensY: 25
   fovAdditiveMultiplier: 0.2
   minFov: 90
   maxFov: 120
+--- !u!114 &6765991127807337483
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6305479378026286844}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba3f288c2952dfe4c94ad670e7a92d83, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  move:
+    m_Name: Move
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: c2769351-8ad0-4870-aa8d-4ec875d6c18c
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
+  jump:
+    m_Name: Jump
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 171862dc-b9c3-4f56-bfb1-00a8f66757d7
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
+  look:
+    m_Name: Look
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 1fd4699d-9e55-4bec-a71e-377f9effdaae
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
+  crouch:
+    m_Name: Crouch
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: e7dd8727-4259-42f2-bb16-6371d2d2cc01
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
+  slide:
+    m_Name: Slide
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: cfcf56f5-2cab-4c1e-abef-815d759115f7
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
+  sprint:
+    m_Name: Sprint
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 491793d4-5680-48a8-b513-01e5d6609e46
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
