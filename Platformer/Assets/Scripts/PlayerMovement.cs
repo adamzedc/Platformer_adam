@@ -1,13 +1,14 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+
 
 public class PlayerMovement : MonoBehaviour
 {
 
     Rigidbody rb;
+    PlayerControls pc;
 
 
     [Header("Debug")]
@@ -46,11 +47,6 @@ public class PlayerMovement : MonoBehaviour
     public float crouchYScale;
     private float startYScale;
 
-    [Header("KeyBinds")]
-    public KeyCode jumpKey = KeyCode.Space;
-    public KeyCode sprintKey = KeyCode.LeftShift;
-    public KeyCode crouchKey = KeyCode.LeftControl;
-
     [Header("Ground Check")]
     public float playerHeight;
     public LayerMask whatIsGround;
@@ -69,9 +65,6 @@ public class PlayerMovement : MonoBehaviour
 
 
     public Transform orientation;
-
-    float horizontaltInput;
-    float verticalInput;
 
     Vector3 moveDirection;
 
@@ -95,6 +88,8 @@ public class PlayerMovement : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         rb.freezeRotation = true;
+
+        pc = GetComponent<PlayerControls>();
 
 
         readyToJump = true;
@@ -122,27 +117,27 @@ public class PlayerMovement : MonoBehaviour
             }
         }
         //Mode - Falling
-        else if(!grounded && rb.velocity.y < 0.1f && !inWater)
+        else if (!grounded && rb.velocity.y < 0.1f && !inWater)
         {
             debugState.text = "Falling";
             state = MovementState.falling;
 
             desiredMoveSpeed = slideSpeed;
-            
-            if(Physics.Raycast(rb.position,Vector3.down, playerHeight * 0.5f + 2f, whatIsGround))
+
+            if (Physics.Raycast(rb.position, Vector3.down, playerHeight * 0.5f + 2f, whatIsGround))
             {
                 desiredMoveSpeed = sprintSpeed;
             }
         }
         //Mode - Crouching
-        else if (Input.GetKey(crouchKey))
+        else if (pc.crouch.IsPressed()) 
         {
             debugState.text = "Crouching";
             state = MovementState.crouching;
             desiredMoveSpeed = crouchSpeed;
         }
         //Mode - Sprinting
-        else if (grounded && Input.GetKey(sprintKey))
+        else if (grounded && pc.sprint.IsPressed())
         {
             debugState.text = "Sprinting";
             state = MovementState.sprinting;
@@ -177,7 +172,6 @@ public class PlayerMovement : MonoBehaviour
         //IF we built up momentum then we want to slowly decrease the speed rather than instantly
         if ((Mathf.Abs(desiredMoveSpeed - lastDesiredMoveSpeed) > 4 && moveSpeed != 0) || (state == MovementState.sliding && lastState == MovementState.air))
         {
-            Debug.Log("We are lerping");
             StopAllCoroutines();
             StartCoroutine(SmoothlyLerpMoveSpeed());
         }
@@ -222,7 +216,6 @@ public class PlayerMovement : MonoBehaviour
             else if (state == MovementState.falling) {
                 float fallSpeed = rb.velocity.y;
                 float fallSpeedIncrease = 1+Mathf.Abs(fallSpeed/90f);
-                Debug.Log(fallSpeedIncrease);
                 time += Time.deltaTime * speedIncreaseMultiplier * fallSpeedIncrease * fallIncreaseMultiplier;
             }
             else
@@ -238,11 +231,11 @@ public class PlayerMovement : MonoBehaviour
 
     private void MyInput()
     {
-        horizontaltInput = Input.GetAxisRaw("Horizontal");
-        verticalInput = Input.GetAxisRaw("Vertical");
+        //horizontaltInput = Input.GetAxisRaw("Horizontal");
+        //verticalInput = Input.GetAxisRaw("Vertical");
 
         //When the user can jump
-        if(Input.GetKey(jumpKey) && readyToJump && grounded)
+        if(pc.jump.WasPressedThisFrame() && readyToJump && grounded)
         {
             readyToJump = false;
 
@@ -252,7 +245,7 @@ public class PlayerMovement : MonoBehaviour
         }
 
         //Start crouch
-        if (Input.GetKeyDown(crouchKey))
+        if (pc.crouch.IsPressed())
         {
             transform.localScale = new Vector3(transform.localScale.x, crouchYScale, transform.localScale.z);
 
@@ -265,7 +258,7 @@ public class PlayerMovement : MonoBehaviour
         }
 
         //Stop Crouching
-        if (Input.GetKeyUp(crouchKey))
+        if (pc.crouch.WasReleasedThisFrame())
         {
             transform.localScale = new Vector3(transform.localScale.x, startYScale, transform.localScale.z);
         }
@@ -303,8 +296,9 @@ public class PlayerMovement : MonoBehaviour
 
     private void MovePlayer()
     {
+        Vector2 moveInput = pc.move.ReadValue<Vector2>(); 
         //Calculate the movement direction
-        moveDirection = orientation.forward * verticalInput + orientation.right * horizontaltInput;
+        moveDirection = orientation.forward * moveInput.y + orientation.right * moveInput.x;
 
         //On slope
         if (OnSlope() && !exitingSlope)
