@@ -207,6 +207,7 @@ GameObject:
   - component: {fileID: 3061306562977996431}
   - component: {fileID: 1406163435877802842}
   - component: {fileID: 206736681469172088}
+  - component: {fileID: 1809394396450940657}
   m_Layer: 0
   m_Name: Player
   m_TagString: player
@@ -230,6 +231,7 @@ Transform:
   - {fileID: 7363719243329655180}
   - {fileID: 7349904700994057223}
   - {fileID: 1976588911550338818}
+  - {fileID: 8184094348225260477}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!54 &829531395370842875
@@ -290,9 +292,6 @@ MonoBehaviour:
   airMultiplier: 0.4
   crouchSpeed: 3.5
   crouchYScale: 0.5
-  jumpKey: 32
-  sprintKey: 304
-  crouchKey: 99
   playerHeight: 2
   whatIsGround:
     serializedVersion: 2
@@ -323,7 +322,6 @@ MonoBehaviour:
   maxSlideTime: 0.75
   slideForce: 200
   slideYScale: 0.5
-  slideKey: 306
 --- !u!114 &1406163435877802842
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -354,3 +352,229 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   winUI: {fileID: 0}
+--- !u!114 &1809394396450940657
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8898951231868937773}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba3f288c2952dfe4c94ad670e7a92d83, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  move:
+    m_Name: Move
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 3b95c4e8-8700-4e7b-bf6c-5b32fd2b2e0f
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
+  jump:
+    m_Name: Jump
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: bd8379f6-54aa-4681-b91f-add5cb93d05e
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
+  look:
+    m_Name: Look
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 3040a2ba-834a-4001-82c4-2bdce842f0e4
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
+  crouch:
+    m_Name: Crouch
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 00bed984-b29d-4fdb-8b3a-6fa541840506
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
+  slide:
+    m_Name: Slide
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: f83a7d12-5d32-4fe8-a63a-fb1f56eb1809
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
+  sprint:
+    m_Name: Sprint
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 9d84e9b1-eb77-4359-bcbd-8d407d7e9633
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
+--- !u!1001 &3102178595836886730
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 5283315023481637728}
+    m_Modifications:
+    - target: {fileID: 4827948610353444181, guid: edeef07ea79185c45bced1a96b0d6d3e, type: 3}
+      propertyPath: cameraPosition
+      value: 
+      objectReference: {fileID: 1976588911550338818}
+    - target: {fileID: 4977449473601308606, guid: edeef07ea79185c45bced1a96b0d6d3e, type: 3}
+      propertyPath: rb
+      value: 
+      objectReference: {fileID: 829531395370842875}
+    - target: {fileID: 4977449473601308606, guid: edeef07ea79185c45bced1a96b0d6d3e, type: 3}
+      propertyPath: sensX
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 4977449473601308606, guid: edeef07ea79185c45bced1a96b0d6d3e, type: 3}
+      propertyPath: sensY
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 4977449473601308606, guid: edeef07ea79185c45bced1a96b0d6d3e, type: 3}
+      propertyPath: orientation
+      value: 
+      objectReference: {fileID: 7349904700994057223}
+    - target: {fileID: 5944252201702683560, guid: edeef07ea79185c45bced1a96b0d6d3e, type: 3}
+      propertyPath: m_Name
+      value: CameraHolder
+      objectReference: {fileID: 0}
+    - target: {fileID: 6529824244859327863, guid: edeef07ea79185c45bced1a96b0d6d3e, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6529824244859327863, guid: edeef07ea79185c45bced1a96b0d6d3e, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 6529824244859327863, guid: edeef07ea79185c45bced1a96b0d6d3e, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6529824244859327863, guid: edeef07ea79185c45bced1a96b0d6d3e, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6529824244859327863, guid: edeef07ea79185c45bced1a96b0d6d3e, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6529824244859327863, guid: edeef07ea79185c45bced1a96b0d6d3e, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6529824244859327863, guid: edeef07ea79185c45bced1a96b0d6d3e, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6529824244859327863, guid: edeef07ea79185c45bced1a96b0d6d3e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6529824244859327863, guid: edeef07ea79185c45bced1a96b0d6d3e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6529824244859327863, guid: edeef07ea79185c45bced1a96b0d6d3e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6954233243433285778, guid: edeef07ea79185c45bced1a96b0d6d3e, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.05
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6305479378026286844, guid: edeef07ea79185c45bced1a96b0d6d3e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1912507196164873872}
+  m_SourcePrefab: {fileID: 100100000, guid: edeef07ea79185c45bced1a96b0d6d3e, type: 3}
+--- !u!4 &8184094348225260477 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6529824244859327863, guid: edeef07ea79185c45bced1a96b0d6d3e, type: 3}
+  m_PrefabInstance: {fileID: 3102178595836886730}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &8974749269611491382 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6305479378026286844, guid: edeef07ea79185c45bced1a96b0d6d3e, type: 3}
+  m_PrefabInstance: {fileID: 3102178595836886730}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1912507196164873872
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8974749269611491382}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba3f288c2952dfe4c94ad670e7a92d83, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  move:
+    m_Name: Move
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: d8f28931-8c4a-44d9-bf1f-0cb0a7f215bc
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
+  jump:
+    m_Name: Jump
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 1d2dadd3-3650-4db2-9cb6-4730f709f1ff
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
+  look:
+    m_Name: Look
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 69b5606c-a202-4278-946b-2707bb7eba94
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
+  crouch:
+    m_Name: Crouch
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: d5ee2983-8d1b-4a56-ba14-6d2eaf78af5b
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
+  slide:
+    m_Name: Slide
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: de056424-c19a-46f4-bf7a-882f129142db
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
+  sprint:
+    m_Name: Sprint
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 21717011-fb53-4d12-805b-5364a7ac7590
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
