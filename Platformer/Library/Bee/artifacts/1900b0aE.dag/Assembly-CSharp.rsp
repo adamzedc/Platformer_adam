@@ -371,6 +371,7 @@
 "Assets/Scripts/EffectController.cs"
 "Assets/Scripts/EventManager.cs"
 "Assets/Scripts/GunFollowCamera.cs"
+"Assets/Scripts/MainMenu.cs"
 "Assets/Scripts/MoveCamera.cs"
 "Assets/Scripts/PlayerCam.cs"
 "Assets/Scripts/PlayerMovement.cs"
