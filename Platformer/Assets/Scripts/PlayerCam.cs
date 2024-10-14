@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 public class PlayerCam : MonoBehaviour
 {
@@ -9,9 +8,6 @@ public class PlayerCam : MonoBehaviour
     public Transform orientation;
     public Rigidbody rb;
     public Camera cam;
-    PlayerControls pc;
-
-    private Vector2 mouseInput;
 
     [Header("Sensitivity")]
     public float sensX;
@@ -30,8 +26,6 @@ public class PlayerCam : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        pc = GetComponent<PlayerControls>();
-
         Cursor.lockState = CursorLockMode.Locked;    
         Cursor.visible = false;
     }
@@ -39,10 +33,9 @@ public class PlayerCam : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        mouseInput = pc.look.ReadValue<Vector2>();
         //Get mouse input
-        float mouseX = mouseInput.x * Time.deltaTime * sensX;
-        float mouseY = mouseInput.y * Time.deltaTime * sensY;
+        float mouseX = Input.GetAxisRaw("MouseX") * Time.deltaTime * sensX;
+        float mouseY = Input.GetAxisRaw("MouseY") * Time.deltaTime * sensY;
 
         if(rb.velocity.magnitude > 12)
         {
@@ -57,6 +50,11 @@ public class PlayerCam : MonoBehaviour
         transform.rotation = Quaternion.Euler(xRotation, yRotation, 0);
         orientation.rotation = Quaternion.Euler(0, yRotation, 0);
     }
+
+    private void FixedUpdate()
+    {
+    }
+
 
     //Need to lerp the fov values so that they dont suddenly drastically change
     private void fovChange() {

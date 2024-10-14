@@ -8,7 +8,6 @@ public class Sliding : MonoBehaviour
     public Transform playerObj;
     private Rigidbody rb;
     private PlayerMovement pm;
-    private PlayerControls pc;
 
     [Header("Sliding")]
     public float maxSlideTime;
@@ -23,14 +22,15 @@ public class Sliding : MonoBehaviour
     //private float highestMultiplier;
 
     [Header("Input")]
-    private Vector2 moveInput;
+    public KeyCode slideKey = KeyCode.LeftControl;
+    private float horizontalInput;
+    private float verticalInput;
     private bool slideBuffer;
 
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
         pm = GetComponent<PlayerMovement>();
-        pc = GetComponent<PlayerControls>();
 
         //slideMultiplier = 1f;
        // highestMultiplier = 1f;
@@ -39,14 +39,15 @@ public class Sliding : MonoBehaviour
 
     private void Update()
     {
-        moveInput = pc.move.ReadValue<Vector2>();
+        horizontalInput = Input.GetAxisRaw("Horizontal");
+        verticalInput = Input.GetAxisRaw("Vertical");
 
         //Buffer the slide so that the player can slide the moment they touch the ground
-        if (pc.slide.WasPressedThisFrame()){
+        if (Input.GetKeyDown(slideKey)){
             slideBuffer = true;
         }
         //Checking if the user can slide
-        if (slideBuffer && (moveInput.x != 0 || moveInput.y != 0) && Physics.Raycast(rb.position,Vector3.down, pm.playerHeight * 0.5f + 0.1f, pm.whatIsGround)) {
+        if (slideBuffer && (horizontalInput != 0 || verticalInput != 0) && Physics.Raycast(rb.position,Vector3.down, pm.playerHeight * 0.5f + 0.1f, pm.whatIsGround)) {
             slideBuffer = false;
             Debug.Log("Sliding");
             StartSlide();
@@ -54,7 +55,7 @@ public class Sliding : MonoBehaviour
         }
 
         //Player will stop sliding when they press a new input (This allows the user to swap to sprinting or jumping whilst still keeping the speed from sliding)
-        if ((pc.sprint.IsPressed() || pc.jump.WasPressedThisFrame() && pm.sliding)) {
+        if ((Input.GetKeyDown(pm.sprintKey) || Input.GetKeyDown(pm.jumpKey)) && pm.sliding) {
             StopSlide();
         }
 
@@ -86,7 +87,7 @@ public class Sliding : MonoBehaviour
     private void SlidingMovement()
     {
         //Allows us to slide in any direction
-        Vector3 inputDirection = orientation.forward * moveInput.y + orientation.right * moveInput.x;
+        Vector3 inputDirection = orientation.forward * verticalInput + orientation.right * horizontalInput;
 
         //Sliding Normally
         if (!pm.OnSlope() || rb.velocity.y > -0.1f)
