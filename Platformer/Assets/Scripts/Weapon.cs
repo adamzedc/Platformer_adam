@@ -2,20 +2,31 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.InputSystem;
 public class Weapon : MonoBehaviour
 {
     public GameObject bulletPrefab;
     public Transform bulletSpawn;
     public float bulletVelocity = 30;
     public float bulletPrefabLifeTime = 3f;
-    void Update()
+    public PlayerInputActions playerControls;
+    public InputAction fire;
+
+    void Awake()
     {
-        if (Input.GetKeyDown(KeyCode.Mouse0)){
-            FireWeapon();
-        }
+        playerControls = new PlayerInputActions();
     }
-    private void FireWeapon(){
+
+    private void OnEnable(){
+        fire = playerControls.Player.Fire;
+        fire.Enable();
+        fire.performed += Fire;
+    }
+
+    private void OnDisable(){
+        fire.Disable();
+    }
+    private void Fire(InputAction.CallbackContext context){
         GameObject bullet = Instantiate(bulletPrefab, bulletSpawn.position, Quaternion.identity);
         bullet.GetComponent<Rigidbody>().AddForce(bulletSpawn.forward.normalized * bulletVelocity, ForceMode.Impulse);
         StartCoroutine(DestroyBulletAfterTime(bullet,bulletPrefabLifeTime));
