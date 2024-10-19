@@ -7,6 +7,7 @@ public class Bullet : MonoBehaviour
 {
     private GameObject gun;
     private Weapon weapon;
+    private SecretTrigger secretTrigger;
 
     private void Start() {
         gun = transform.parent.gameObject;
@@ -14,12 +15,18 @@ public class Bullet : MonoBehaviour
     }
 
     private void OnCollisionEnter(Collision collision){
-        if(collision.gameObject.CompareTag("enemy")){ 
+        if (collision.gameObject.CompareTag("enemy"))
+        {
             Debug.Log("Bullet Collision");
-            print("hit"+ collision.gameObject.name + "!"); 
+            print("hit" + collision.gameObject.name + "!");
             Destroy(collision.gameObject);
             Destroy(gameObject);
             weapon.hit = true;
+        }
+        else if (collision.gameObject.CompareTag("secret")) {
+            secretTrigger = collision.gameObject.GetComponent<SecretTrigger>();
+            Destroy(collision.gameObject);
+            secretTrigger.OnTargetHit();
         }
     }
 }

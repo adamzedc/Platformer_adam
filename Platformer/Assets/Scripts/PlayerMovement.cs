@@ -57,9 +57,9 @@ public class PlayerMovement : MonoBehaviour
     private RaycastHit slopeHit;
     private bool exitingSlope;
 
-    [Header("Bounce Pad Handling")]
-    public BouncePad bp;
-    public LayerMask whatIsBouncePad;
+    //[Header("Bounce Pad Handling")]
+    //public BouncePad bp;
+    //public LayerMask whatIsBouncePad;
 
     public Transform orientation;
 
@@ -235,8 +235,6 @@ public class PlayerMovement : MonoBehaviour
 
     private void MyInput()
     {
-        //horizontaltInput = Input.GetAxisRaw("Horizontal");
-        //verticalInput = Input.GetAxisRaw("Vertical");
 
         //When the user can jump
         if(pc.jump.WasPressedThisFrame() && readyToJump && grounded)
@@ -344,10 +342,10 @@ public class PlayerMovement : MonoBehaviour
 
 
         //Ground Check
-        if (Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + 0.1f, whatIsBouncePad)) {
-            bp.bouncePlayer(rb);
-        }
-        else if (Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + 0.1f, whatIsGround))
+        //if (Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + 0.1f, whatIsBouncePad)) {
+        //    bp.bouncePlayer(rb);
+        //}
+        if (Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + 0.1f, whatIsGround))
         {
             debugGrounded.text = "Grounded";
             grounded = true;

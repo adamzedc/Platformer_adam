@@ -5,9 +5,9 @@ public class Water : MonoBehaviour
 {
     [Header("References")]
     public LayerMask whatIsWater;
-    public Rigidbody rb;
-    public PlayerMovement pm;
-    public Sliding sl;
+    private Rigidbody rb;
+    private PlayerMovement pm;
+    private Sliding sl;
 
     [Header("Movement")]
     public float waterGroundDrag;
@@ -30,6 +30,12 @@ public class Water : MonoBehaviour
 
     private void Start()
     {
+        rb = GetComponent<Rigidbody>();
+        pm = GetComponent<PlayerMovement>();
+        sl = GetComponent<Sliding>();
+
+
+
         airDrag = pm.airDrag;
         groundDrag = pm.groundDrag;
         walkSpeed = pm.walkSpeed;
