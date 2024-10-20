@@ -50,7 +50,7 @@ public class PlayerMovement : MonoBehaviour
     [Header("Ground Check")]
     public float playerHeight;
     public LayerMask whatIsGround;
-    bool grounded;
+    public bool grounded;
 
     [Header("Slope Handling")]
     public float maxSlopeAngle;
@@ -113,7 +113,7 @@ public class PlayerMovement : MonoBehaviour
 
             if (OnSlope() && rb.velocity.y < 0.1f && grounded)
             {
-                desiredMoveSpeed = fallSpeed;
+                desiredMoveSpeed = slideSpeed;
             }
             else
             {
@@ -126,7 +126,7 @@ public class PlayerMovement : MonoBehaviour
             debugState.text = "Falling";
             state = MovementState.falling;
 
-            desiredMoveSpeed = slideSpeed;
+            desiredMoveSpeed = fallSpeed;
 
             if (Physics.Raycast(rb.position, Vector3.down, playerHeight * 0.5f + 2f, whatIsGround))
             {
@@ -211,13 +211,13 @@ public class PlayerMovement : MonoBehaviour
         {
             moveSpeed = Mathf.Lerp(startValue, desiredMoveSpeed, time / difference);
 
-            if (OnSlope())
+            if (OnSlope() && !inWater)
             {
                 float slopeAngle = Vector3.Angle(Vector3.up, slopeHit.normal);
                 float slopeAngleIncrease = 1 + (slopeAngle / 90f);
                 time += Time.deltaTime * speedIncreaseMultiplier * slopeIncreaseMultiplier * slopeAngleIncrease;
             }
-            else if (state == MovementState.falling) {
+            else if (state == MovementState.falling && !inWater) {
                 float fallSpeed = rb.velocity.y;
                 float fallSpeedIncrease = 1+Mathf.Abs(fallSpeed/90f);
                 time += Time.deltaTime * speedIncreaseMultiplier * fallSpeedIncrease * fallIncreaseMultiplier;
@@ -285,12 +285,17 @@ public class PlayerMovement : MonoBehaviour
         }
         //DEBUG END
 
+        if (inWater)
+        {
+            StopAllCoroutines();
+        }
+
         //Handle Drag
         if (grounded)
         {
             rb.drag = groundDrag;
         }
-        else {
+        else{
             rb.drag = airDrag;
         }
 

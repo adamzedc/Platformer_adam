@@ -46,7 +46,7 @@ public class Sliding : MonoBehaviour
             slideBuffer = true;
         }
         //Checking if the user can slide
-        if (slideBuffer && (moveInput.x != 0 || moveInput.y != 0) && Physics.Raycast(rb.position,Vector3.down, pm.playerHeight * 0.5f + 0.1f, pm.whatIsGround)) {
+        if (slideBuffer && (moveInput.x != 0 || moveInput.y != 0) && pm.grounded) {
             slideBuffer = false;
             Debug.Log("Sliding");
             StartSlide();

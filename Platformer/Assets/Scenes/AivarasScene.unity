@@ -924,7 +924,7 @@ Transform:
   m_GameObject: {fileID: 363943449}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 10.05, y: 0.9999995, z: -8.48}
+  m_LocalPosition: {x: 10.05, y: 27.88, z: -8.48}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2705,11 +2705,6 @@ Transform:
   - {fileID: 1923370325}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &818758524 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8898951231868937773, guid: ec3352d5b8d2cb442997aea6ea97f01a, type: 3}
-  m_PrefabInstance: {fileID: 4639842939480701533}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1001568553 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3624734280686764415, guid: ec3352d5b8d2cb442997aea6ea97f01a, type: 3}
@@ -3782,92 +3777,6 @@ Rigidbody:
   m_CorrespondingSourceObject: {fileID: 829531395370842875, guid: ec3352d5b8d2cb442997aea6ea97f01a, type: 3}
   m_PrefabInstance: {fileID: 4639842939480701533}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1643047782
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 818758524}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 66ef7bfaaed2243d596cc770783d90be, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  whatIsWater:
-    serializedVersion: 2
-    m_Bits: 16
-  waterGroundDrag: 10
-  waterAirDrag: 2
-  waterGravity: 9.81
-  waterWalkSpeed: 0
-  waterSprintSpeed: 0
---- !u!114 &1643047791
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 818758524}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ba3f288c2952dfe4c94ad670e7a92d83, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  move:
-    m_Name: Move
-    m_Type: 0
-    m_ExpectedControlType: 
-    m_Id: a0bfb5b0-7c57-4b3c-a6e4-94c8ce85c7f7
-    m_Processors: 
-    m_Interactions: 
-    m_SingletonActionBindings: []
-    m_Flags: 0
-  jump:
-    m_Name: Jump
-    m_Type: 0
-    m_ExpectedControlType: 
-    m_Id: 4c32a62e-f635-4c0e-8152-93f1e4efdf4d
-    m_Processors: 
-    m_Interactions: 
-    m_SingletonActionBindings: []
-    m_Flags: 0
-  look:
-    m_Name: Look
-    m_Type: 0
-    m_ExpectedControlType: 
-    m_Id: 7661ddb1-a7c8-45a8-9d6c-1b69cf7a1c8d
-    m_Processors: 
-    m_Interactions: 
-    m_SingletonActionBindings: []
-    m_Flags: 0
-  crouch:
-    m_Name: Crouch
-    m_Type: 0
-    m_ExpectedControlType: 
-    m_Id: bbb17f6c-45ac-4a1f-96f2-8726b4b946a3
-    m_Processors: 
-    m_Interactions: 
-    m_SingletonActionBindings: []
-    m_Flags: 0
-  slide:
-    m_Name: Slide
-    m_Type: 0
-    m_ExpectedControlType: 
-    m_Id: 22371bb5-b991-4be0-9c18-231727674316
-    m_Processors: 
-    m_Interactions: 
-    m_SingletonActionBindings: []
-    m_Flags: 0
-  sprint:
-    m_Name: Sprint
-    m_Type: 0
-    m_ExpectedControlType: 
-    m_Id: ba625632-124d-48c2-9771-9a2713a598a4
-    m_Processors: 
-    m_Interactions: 
-    m_SingletonActionBindings: []
-    m_Flags: 0
 --- !u!114 &1691113863 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5998461442821250937, guid: e2ac093d2c94e7745a588fac61f09757, type: 3}
@@ -6921,16 +6830,28 @@ PrefabInstance:
       value: WaterObject
       objectReference: {fileID: 0}
     - target: {fileID: 5975498495114582241, guid: c4a3db7bb1d5c40a0b2512d7ff9ae9fc, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 5975498495114582241, guid: c4a3db7bb1d5c40a0b2512d7ff9ae9fc, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 5975498495114582241, guid: c4a3db7bb1d5c40a0b2512d7ff9ae9fc, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 5975498495114582241, guid: c4a3db7bb1d5c40a0b2512d7ff9ae9fc, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 11.8
       objectReference: {fileID: 0}
     - target: {fileID: 5975498495114582241, guid: c4a3db7bb1d5c40a0b2512d7ff9ae9fc, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.11
+      value: 5.8
       objectReference: {fileID: 0}
     - target: {fileID: 5975498495114582241, guid: c4a3db7bb1d5c40a0b2512d7ff9ae9fc, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 23.9
+      value: 17.8
       objectReference: {fileID: 0}
     - target: {fileID: 5975498495114582241, guid: c4a3db7bb1d5c40a0b2512d7ff9ae9fc, type: 3}
       propertyPath: m_LocalRotation.w
@@ -6981,17 +6902,37 @@ PrefabInstance:
       propertyPath: debugDeadState
       value: 
       objectReference: {fileID: 765968605}
+    - target: {fileID: 4695575197182582124, guid: ec3352d5b8d2cb442997aea6ea97f01a, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4695575197182582124, guid: ec3352d5b8d2cb442997aea6ea97f01a, type: 3}
+      propertyPath: waterGravity
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4695575197182582124, guid: ec3352d5b8d2cb442997aea6ea97f01a, type: 3}
+      propertyPath: waterXAirDrag
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4695575197182582124, guid: ec3352d5b8d2cb442997aea6ea97f01a, type: 3}
+      propertyPath: waterYAirDrag
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 4695575197182582124, guid: ec3352d5b8d2cb442997aea6ea97f01a, type: 3}
+      propertyPath: waterDownwardForce
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 5283315023481637728, guid: ec3352d5b8d2cb442997aea6ea97f01a, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 12.59
       objectReference: {fileID: 0}
     - target: {fileID: 5283315023481637728, guid: ec3352d5b8d2cb442997aea6ea97f01a, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.3
+      value: 45.86
       objectReference: {fileID: 0}
     - target: {fileID: 5283315023481637728, guid: ec3352d5b8d2cb442997aea6ea97f01a, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -38.11
       objectReference: {fileID: 0}
     - target: {fileID: 5283315023481637728, guid: ec3352d5b8d2cb442997aea6ea97f01a, type: 3}
       propertyPath: m_LocalRotation.w
@@ -7065,13 +7006,7 @@ PrefabInstance:
     m_RemovedGameObjects:
     - {fileID: 2413316739550614437, guid: ec3352d5b8d2cb442997aea6ea97f01a, type: 3}
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 8898951231868937773, guid: ec3352d5b8d2cb442997aea6ea97f01a, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1643047782}
-    - targetCorrespondingSourceObject: {fileID: 8898951231868937773, guid: ec3352d5b8d2cb442997aea6ea97f01a, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1643047791}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ec3352d5b8d2cb442997aea6ea97f01a, type: 3}
 --- !u!1001 &8300680937518350046
 PrefabInstance:
