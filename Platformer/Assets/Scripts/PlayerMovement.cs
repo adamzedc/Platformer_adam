@@ -80,15 +80,15 @@ public class PlayerMovement : MonoBehaviour
     public bool sliding;
     public bool inWater;
 
-    // TRAIN MOVEMENT TRACKING
-    private Rigidbody trainRb;
-    private bool onTrain;     
-    private Vector3 lastTrainPosition; 
+    //// TRAIN MOVEMENT TRACKING
+    //private Rigidbody trainRb;
+    //private bool onTrain;     
+    //private Vector3 lastTrainPosition; 
     
     void Start()
     {
-        // train movement
-        onTrain = false; 
+        //// train movement
+        //onTrain = false; 
 
 
         rb = GetComponent<Rigidbody>();
@@ -336,12 +336,12 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        // apply train movement
+        //// apply train movement
 
-        if (onTrain && trainRb != null)
-        {
-            ApplyTrainMovement();
-        }
+        //if (onTrain && trainRb != null)
+        //{
+        //    ApplyTrainMovement();
+        //}
         
         debugSpeed.text = "Speed : " + rb.velocity.magnitude;
 
@@ -419,46 +419,46 @@ public class PlayerMovement : MonoBehaviour
         return Vector3.ProjectOnPlane(direction, slopeHit.normal).normalized;
     }
 
-    // TRAIN MOVEMENT TRACKING
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.collider.CompareTag("Train"))
-        {
+    //// TRAIN MOVEMENT TRACKING
+    //private void OnCollisionEnter(Collision collision)
+    //{
+    //    if (collision.collider.CompareTag("Train"))
+    //    {
             
-            Debug.Log("HELLO SIR");
-            trainRb = collision.collider.GetComponent<Rigidbody>();
+    //        Debug.Log("HELLO SIR");
+    //        trainRb = collision.collider.GetComponent<Rigidbody>();
 
             
-            if (trainRb != null)
-            {
+    //        if (trainRb != null)
+    //        {
                 
-                onTrain = true;
-                lastTrainPosition = trainRb.position;
-            } else {
-                Debug.Log("null train.. help");
-            }
-        }
-    }
+    //            onTrain = true;
+    //            lastTrainPosition = trainRb.position;
+    //        } else {
+    //            Debug.Log("null train.. help");
+    //        }
+    //    }
+    //}
 
-    private void OnCollisionExit(Collision collision)
-    {
-        if (collision.collider.CompareTag("Train"))
-        {
-            Debug.Log("GOODBYE SIR");
-            onTrain = false;
-            trainRb = null; 
-        }
-    }
+    //private void OnCollisionExit(Collision collision)
+    //{
+    //    if (collision.collider.CompareTag("Train"))
+    //    {
+    //        Debug.Log("GOODBYE SIR");
+    //        onTrain = false;
+    //        trainRb = null; 
+    //    }
+    //}
 
-    private void ApplyTrainMovement()
-    {
-        // Calculate the train's movement since the last frame
-        Vector3 trainMovement = trainRb.position - lastTrainPosition;
+    //private void ApplyTrainMovement()
+    //{
+    //    // Calculate the train's movement since the last frame
+    //    Vector3 trainMovement = trainRb.position - lastTrainPosition;
 
-        // Move the player along with the train's movement
-        rb.MovePosition(rb.position + trainMovement);
+    //    // Move the player along with the train's movement
+    //    rb.MovePosition(rb.position + trainMovement);
 
-        // Update the last position for the next frame
-        lastTrainPosition = trainRb.position;
-    }
+    //    // Update the last position for the next frame
+    //    lastTrainPosition = trainRb.position;
+    //}
 }
