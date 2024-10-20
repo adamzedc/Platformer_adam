@@ -1,6 +1,6 @@
 using UnityEngine;
 using TMPro;
-
+using UnityEngine.SceneManagement;
 public class Death : MonoBehaviour
 {
     [Header("Mandatory Values")]
@@ -21,6 +21,7 @@ public class Death : MonoBehaviour
         if(Physics.Raycast(rb.position, Vector3.down, playerHeight * 0.5f + 0.1f, whatIsDanger))
         {
             debugDeadState.text = "Dead";
+            SceneManager.LoadScene("Menu"); 
         }
     }
 }
