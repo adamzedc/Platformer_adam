@@ -6898,10 +6898,18 @@ PrefabInstance:
       propertyPath: winUI
       value: 
       objectReference: {fileID: 1580534020}
+    - target: {fileID: 1111635300405657418, guid: ec3352d5b8d2cb442997aea6ea97f01a, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1406163435877802842, guid: ec3352d5b8d2cb442997aea6ea97f01a, type: 3}
       propertyPath: debugDeadState
       value: 
       objectReference: {fileID: 765968605}
+    - target: {fileID: 3732723473261740335, guid: ec3352d5b8d2cb442997aea6ea97f01a, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 13400000, guid: 331f975f3883e664e98eb03ba668f7ec, type: 2}
     - target: {fileID: 4695575197182582124, guid: ec3352d5b8d2cb442997aea6ea97f01a, type: 3}
       propertyPath: m_Enabled
       value: 1
@@ -6962,6 +6970,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7432116876233265333, guid: ec3352d5b8d2cb442997aea6ea97f01a, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7948665524351177484, guid: ec3352d5b8d2cb442997aea6ea97f01a, type: 3}
       propertyPath: bp
       value: 
@@ -7001,6 +7013,10 @@ PrefabInstance:
     - target: {fileID: 8898951231868937773, guid: ec3352d5b8d2cb442997aea6ea97f01a, type: 3}
       propertyPath: m_TagString
       value: player
+      objectReference: {fileID: 0}
+    - target: {fileID: 8930209211979683575, guid: ec3352d5b8d2cb442997aea6ea97f01a, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:

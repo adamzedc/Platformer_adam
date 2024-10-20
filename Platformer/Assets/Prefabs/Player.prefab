@@ -298,11 +298,8 @@ MonoBehaviour:
   whatIsGround:
     serializedVersion: 2
     m_Bits: 1024
+  grounded: 0
   maxSlopeAngle: 40
-  bp: {fileID: 0}
-  whatIsBouncePad:
-    serializedVersion: 2
-    m_Bits: 2048
   orientation: {fileID: 7349904700994057223}
   state: 0
   sliding: 0
@@ -436,10 +433,10 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 16
   waterGroundDrag: 10
-  waterAirDrag: 2
+  waterXAirDrag: 0
+  waterYAirDrag: 0
   waterGravity: 9.81
-  waterWalkSpeed: 0
-  waterSprintSpeed: 0
+  waterDownwardForce: 0
 --- !u!1001 &274705493232808484
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -448,6 +445,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 5283315023481637728}
     m_Modifications:
+    - target: {fileID: 3459537505147826955, guid: a59a23b03543f034098d3d11031631dc, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 13400000, guid: 331f975f3883e664e98eb03ba668f7ec, type: 2}
     - target: {fileID: 6730593322119339850, guid: a59a23b03543f034098d3d11031631dc, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
