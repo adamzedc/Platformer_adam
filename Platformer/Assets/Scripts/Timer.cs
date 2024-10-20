@@ -52,6 +52,6 @@ public class Timer : MonoBehaviour
         timeToDisplay += timerType == TimerType.Countdown ? -Time.deltaTime : Time.deltaTime;
 
         TimeSpan timeSpan = TimeSpan.FromSeconds(timeToDisplay);
-        _timerText.text = "Slide Time : " + timeSpan.ToString(@"mm\:ss\:ff");
+        _timerText.text = "Time : " + timeSpan.ToString(@"mm\:ss\:ff");
     }
 }

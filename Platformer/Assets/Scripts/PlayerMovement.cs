@@ -82,6 +82,8 @@ public class PlayerMovement : MonoBehaviour
     
     void Start()
     {
+        EventManager.OnTimerStart();
+
         rb = GetComponent<Rigidbody>();
         rb.freezeRotation = true;
 
@@ -263,18 +265,6 @@ public class PlayerMovement : MonoBehaviour
         MyInput();
         speedControl();
         StateHandler();
-
-        //DEBUG START
-        if (sliding)
-        {
-            EventManager.OnTimerStart();
-        }
-        else
-        {
-            EventManager.OnTimerReset();
-            EventManager.OnTimerStop();
-        }
-        //DEBUG END
 
         if (inWater)
         {

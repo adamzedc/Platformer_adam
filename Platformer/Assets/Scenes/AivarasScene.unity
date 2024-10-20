@@ -6907,6 +6907,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 765968605}
     - target: {fileID: 3732723473261740335, guid: ec3352d5b8d2cb442997aea6ea97f01a, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3732723473261740335, guid: ec3352d5b8d2cb442997aea6ea97f01a, type: 3}
       propertyPath: m_Material
       value: 
       objectReference: {fileID: 13400000, guid: 331f975f3883e664e98eb03ba668f7ec, type: 2}
@@ -6980,7 +6984,7 @@ PrefabInstance:
       objectReference: {fileID: 1627451806}
     - target: {fileID: 7948665524351177484, guid: ec3352d5b8d2cb442997aea6ea97f01a, type: 3}
       propertyPath: fallSpeed
-      value: 20
+      value: 1000
       objectReference: {fileID: 0}
     - target: {fileID: 7948665524351177484, guid: ec3352d5b8d2cb442997aea6ea97f01a, type: 3}
       propertyPath: walkSpeed
@@ -7187,6 +7191,10 @@ PrefabInstance:
     - target: {fileID: 6911626237369673914, guid: e2ac093d2c94e7745a588fac61f09757, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7094979781388461019, guid: e2ac093d2c94e7745a588fac61f09757, type: 3}
+      propertyPath: m_text
+      value: 'Timer : 0'
       objectReference: {fileID: 0}
     - target: {fileID: 7573836418137625407, guid: e2ac093d2c94e7745a588fac61f09757, type: 3}
       propertyPath: weapon
