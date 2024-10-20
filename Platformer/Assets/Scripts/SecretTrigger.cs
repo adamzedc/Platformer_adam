@@ -12,10 +12,28 @@ public class SecretTrigger : MonoBehaviour
 
 
     public GameObject secretLevel;
+    private enum secretTypes
+    {
+        ObjectGoesFromInvisibleToVisible,
+        ObjectGoesFromVisibleToInvisible
+    }
+    [SerializeField]
+    private secretTypes secretType;
+
 
     //Make the level visible when the target has been hit!
     public void OnTargetHit()
     {
-        secretLevel.SetActive(true);
+        //With the use of the enum, we can choose whether we want an object to disappear when we hit the target
+        //OR
+        //We can choose to make it appear when we hit the target
+
+        if (secretTypes.ObjectGoesFromInvisibleToVisible == secretType)
+        {
+            secretLevel.SetActive(true);
+        }
+        else if (secretTypes.ObjectGoesFromVisibleToInvisible == secretType) { 
+            secretLevel.SetActive(false);
+        }
     }
 }
