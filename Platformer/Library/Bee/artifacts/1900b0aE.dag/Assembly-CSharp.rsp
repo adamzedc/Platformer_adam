@@ -395,6 +395,7 @@
 "Assets/Scripts/Water.cs"
 "Assets/Scripts/Weapon.cs"
 "Assets/Scripts/WinCondition.cs"
+"Assets/TrainMovement.cs"
 -langversion:9.0
 /deterministic
 /optimize+

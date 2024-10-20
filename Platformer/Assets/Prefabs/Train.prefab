@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 7568512205379951617}
   - component: {fileID: 8385590926342143315}
   - component: {fileID: -8344426224056292225}
+  - component: {fileID: 4282121081499703934}
   m_Layer: 10
   m_Name: Train
   m_TagString: Train
@@ -184,3 +185,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a27b677fbaa9d74b9814c8ef4b8b0f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &4282121081499703934
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9034264526942218613}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b335ed78b66bab544a8248aac2fe149c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  minTrainSpeed: 3
+  maxTrainSpeed: 8
