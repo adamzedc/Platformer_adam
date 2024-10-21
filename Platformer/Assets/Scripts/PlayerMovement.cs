@@ -167,7 +167,7 @@ public class PlayerMovement : MonoBehaviour
         // We are checking if we are only transitioning from walking -> sprinting or did we build up a large momentum
         // walking -> sprinting has a difference of 3 hence the greater than 4 check
         //IF we built up momentum then we want to slowly decrease the speed rather than instantly
-        if ((Mathf.Abs(desiredMoveSpeed - lastDesiredMoveSpeed) > 4 && moveSpeed != 0) || (state == MovementState.sliding && lastState == MovementState.air))
+        if ((Mathf.Abs(desiredMoveSpeed - lastDesiredMoveSpeed) > (sprintSpeed-walkSpeed+1) && moveSpeed != 0) || (state == MovementState.sliding && lastState == MovementState.air))
         {
             StopAllCoroutines();
             StartCoroutine(SmoothlyLerpMoveSpeed());
