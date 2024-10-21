@@ -287,11 +287,6 @@ Mesh:
     offset: 0
     size: 0
     path: 
---- !u!4 &81860723 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 2589085502186102705, guid: 552dfb543aa628147af7f68831d17609, type: 3}
-  m_PrefabInstance: {fileID: 948982431}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &118280086
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2788,10 +2783,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects:
-    - targetCorrespondingSourceObject: {fileID: 2589085502186102705, guid: 552dfb543aa628147af7f68831d17609, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1237795832}
+    m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 552dfb543aa628147af7f68831d17609, type: 3}
 --- !u!114 &1001568553 stripped
@@ -3549,59 +3541,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1237795831
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1237795832}
-  - component: {fileID: 1237795833}
-  m_Layer: 0
-  m_Name: TrainTrigger
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1237795832
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1237795831}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 81860723}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &1237795833
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1237795831}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.9, y: 1, z: 0.9}
-  m_Center: {x: 0, y: 0.1, z: 0}
 --- !u!850595691 &1276807300
 LightingSettings:
   m_ObjectHideFlags: 0
@@ -7150,7 +7089,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7948665524351177484, guid: ec3352d5b8d2cb442997aea6ea97f01a, type: 3}
       propertyPath: fallIncreaseMultiplier
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8898951231868937773, guid: ec3352d5b8d2cb442997aea6ea97f01a, type: 3}
       propertyPath: m_Name

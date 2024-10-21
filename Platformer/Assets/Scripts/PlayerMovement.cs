@@ -318,7 +318,7 @@ public class PlayerMovement : MonoBehaviour
     private void FixedUpdate()
     {
         debugSpeed.text = "Speed : " + rb.velocity.magnitude;
-
+        sprintSpeed = 10;
 
         //Ground Check
         //if (Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + 0.1f, whatIsBouncePad)) {
