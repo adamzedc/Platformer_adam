@@ -278,10 +278,12 @@ MonoBehaviour:
   debugGrounded: {fileID: 0}
   debugSpeed: {fileID: 0}
   debugState: {fileID: 0}
+  moveSpeed: 0
   walkSpeed: 7
   sprintSpeed: 10
   slideSpeed: 30
   fallSpeed: 20
+  desiredMoveSpeed: 0
   speedIncreaseMultiplier: 1.5
   slopeIncreaseMultiplier: 2.5
   fallIncreaseMultiplier: 3
