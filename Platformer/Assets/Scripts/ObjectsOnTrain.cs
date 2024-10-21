@@ -1,23 +1,30 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class ObjectsOnTrain : MonoBehaviour
 {
     private Rigidbody rb;
+    private NavMeshAgent agent;
     private bool objectOnTrain;
+    private PlayerMovement pm;
     private Vector3 lastTrainPosition;
     private GameObject obj;
+    private float playerSpeed;
+    private Rigidbody objRb;
 
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
+        agent = GetComponent<NavMeshAgent>();
         objectOnTrain = false;
     }
 
     private void Update()
     {
-        if (objectOnTrain) {
+        if (objectOnTrain)
+        {
             ApplyTrainMovement();
         }
     }
@@ -28,6 +35,7 @@ public class ObjectsOnTrain : MonoBehaviour
         if (collision.gameObject.CompareTag("player"))
         {
             obj = collision.gameObject;
+            pm = obj.GetComponent<PlayerMovement>();
             Debug.Log("HELLO SIR");
             objectOnTrain = true;
             lastTrainPosition = rb.position;
@@ -38,7 +46,13 @@ public class ObjectsOnTrain : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("player"))
         {
+            obj = collision.gameObject;
             Debug.Log("GOODBYE SIR");
+            //objRb = obj.GetComponent<Rigidbody>();
+            playerSpeed = pm.desiredMoveSpeed;
+            //objRb.AddForce(Vector3.forward * agent.speed, ForceMode.Impulse);
+            pm.desiredMoveSpeed = playerSpeed + agent.speed;
+            
             objectOnTrain = false;
         }
     }
@@ -49,10 +63,15 @@ public class ObjectsOnTrain : MonoBehaviour
         Vector3 trainMovement = rb.position - lastTrainPosition;
 
         // Move the player along with the train's movement
-        Rigidbody objRb = obj.GetComponent<Rigidbody>();
+        objRb = obj.GetComponent<Rigidbody>();
         objRb.MovePosition(objRb.position + trainMovement);
 
         // Update the last position for the next frame
         lastTrainPosition = rb.position;
+    }
+
+    private void AdjustPlayerMoveSpeedOnExit()
+    {
+        
     }
 }
