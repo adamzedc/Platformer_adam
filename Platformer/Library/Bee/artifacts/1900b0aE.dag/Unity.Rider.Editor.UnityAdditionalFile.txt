@@ -1,5 +1,1 @@
-<<<<<<< Updated upstream
-C:\Users\lucav\Downloads\Platformer\Platformer\Platformer
-=======
 C:\Users\barcy\Documents\GitHub\Platformer\Platformer
->>>>>>> Stashed changes
