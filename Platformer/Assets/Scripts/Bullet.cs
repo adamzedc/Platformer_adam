@@ -15,6 +15,7 @@ public class Bullet : MonoBehaviour
             Destroy(collision.gameObject);
             Destroy(gameObject);
             BarEventManager.OnSliderReset();
+            ScoreEventManager.OnScoreIncrement();
         }
         else if (collision.gameObject.CompareTag("secret"))
         {
@@ -32,9 +33,8 @@ public class Bullet : MonoBehaviour
             }
             Destroy(gameObject);
             BarEventManager.OnSliderReset();
+            ScoreEventManager.OnScoreIncrement();
         }
-        else {
-            Destroy(gameObject);
-        }
+       
     }
 }

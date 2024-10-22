@@ -326,6 +326,10 @@
 -r:"C:/Program Files/Unity/Hub/Editor/2022.3.47f1/Editor/Data/NetStandard/compat/2.1.0/shims/netstandard/System.Xml.XPath.XDocument.dll"
 -r:"C:/Program Files/Unity/Hub/Editor/2022.3.47f1/Editor/Data/NetStandard/Extensions/2.0.0/System.Runtime.InteropServices.WindowsRuntime.dll"
 -r:"C:/Program Files/Unity/Hub/Editor/2022.3.47f1/Editor/Data/NetStandard/ref/2.1.0/netstandard.dll"
+<<<<<<< Updated upstream
+=======
+-r:"C:/Program Files/Unity/Hub/Editor/2022.3.47f1/Editor/Data/PlaybackEngines/MacStandaloneSupport/UnityEditor.iOS.Extensions.Xcode.dll"
+>>>>>>> Stashed changes
 -r:"Library/PackageCache/com.unity.testtools.codecoverage@1.2.6/lib/ReportGenerator/ReportGeneratorMerged.dll"
 -r:"Library/PackageCache/com.unity.visualscripting@1.9.4/Runtime/VisualScripting.Flow/Dependencies/NCalc/Unity.VisualScripting.Antlr3.Runtime.dll"
 -r:"Library/Bee/artifacts/1900b0aE.dag/Cinemachine.ref.dll"
@@ -392,6 +396,8 @@
 "Assets/Scripts/PlayerInputActions.cs"
 "Assets/Scripts/PlayerMovement.cs"
 "Assets/Scripts/ProgressBar.cs"
+"Assets/Scripts/Score.cs"
+"Assets/Scripts/ScoreEventManager.cs"
 "Assets/Scripts/SecretTrigger.cs"
 "Assets/Scripts/Sliding.cs"
 "Assets/Scripts/Timer.cs"
