@@ -1,5 +1,3 @@
-using System;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class Water : MonoBehaviour
@@ -82,7 +80,7 @@ public class Water : MonoBehaviour
         float sphereRadius = pm.playerHeight * 0.5f + 0.1f;
         Vector3 origin = transform.position;
 
-        // Check for water using OverlapSphere to detect trigger colliders
+        // Check for water
         Collider[] hitColliders = Physics.OverlapSphere(origin, sphereRadius, whatIsWater);
         bool inWater = false;
 

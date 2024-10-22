@@ -204,7 +204,7 @@ public class PlayerMovement : MonoBehaviour
             difference = difference / speedRateOfIncrease;
         }
 
-
+        //Lerp the speed of the player
         while (time < difference)
         {
             moveSpeed = Mathf.Lerp(startValue, desiredMoveSpeed, time / difference);
@@ -301,7 +301,8 @@ public class PlayerMovement : MonoBehaviour
         //On Ground
         else if (grounded)
         {
-            if(IsOppositeDirectionInput())
+            //Reduce the speed if the player is moving in the opposite direction
+            if (IsOppositeDirectionInput())
             {
                 rb.AddForce(moveDirection.normalized * moveSpeed * 10f * 0.5f, ForceMode.Force);
             }
@@ -315,6 +316,7 @@ public class PlayerMovement : MonoBehaviour
         //in Air
         else if (!grounded)
         {
+            //Reduce the speed if the player is moving in the opposite direction
             if (IsOppositeDirectionInput())
             {
                 rb.AddForce(moveDirection.normalized * moveSpeed * 10f * 0.5f * airMultiplier, ForceMode.Force);
@@ -333,9 +335,6 @@ public class PlayerMovement : MonoBehaviour
         sprintSpeed = 10;
 
         //Ground Check
-        //if (Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + 0.1f, whatIsBouncePad)) {
-        //    bp.bouncePlayer(rb);
-        //}
         if (Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + 0.1f, whatIsGround))
         {
             debugGrounded.text = "Grounded";
@@ -347,9 +346,6 @@ public class PlayerMovement : MonoBehaviour
             grounded = false;
         }
         MovePlayer();
-
-        
-
 
     }
 
@@ -382,6 +378,8 @@ public class PlayerMovement : MonoBehaviour
             }
         }
     }
+
+    //Allows the player to jump
     private void Jump()
     {
         exitingSlope = true;
@@ -397,13 +395,16 @@ public class PlayerMovement : MonoBehaviour
         exitingSlope = false;
     }
 
+    //Allows user to crouch
     private void Crouch() {
 
+        //If grounded we crouch
         if (grounded)
         {
             transform.localScale = new Vector3(transform.localScale.x, crouchYScale, transform.localScale.z);
             rb.AddForce(Vector3.down * 10f, ForceMode.Impulse);
         }
+        //If we are in the air we dive
         else if (readyToDive && !inWater)
         {
             readyToDive = false;
@@ -426,23 +427,25 @@ public class PlayerMovement : MonoBehaviour
 
     private bool IsOppositeDirectionInput()
     {
-        //Get the players inpuy
+        //Get the players input
         Vector2 moveInput = pc.move.ReadValue<Vector2>();
         Vector3 inputDirection = orientation.forward * moveInput.y + orientation.right * moveInput.x;
 
-        // Normalize the input direction
+        //Which direction the player wants to move
         inputDirection.Normalize();
 
-        // Get the current movement direction
+        // Which direction the player is currently moving
         Vector3 currentDirection = rb.velocity.normalized;
 
-        // Calculate the dot product
+        // How do these directions compare
         float dotProduct = Vector3.Dot(currentDirection, inputDirection);
 
         // If the dot product is negative, the input direction is opposite to the current movement direction
         return dotProduct < 0;
     }
 
+
+    //We check if the player is on a slope
     public bool OnSlope() {
         if (Physics.Raycast(transform.position, Vector3.down, out slopeHit, playerHeight * 0.5f + 0.2f))
         {
@@ -452,6 +455,7 @@ public class PlayerMovement : MonoBehaviour
         return false;
     }
 
+    //We get the direction of the slope
     public Vector3 GetSlopeMoveDirection(Vector3 direction)
     {
         return Vector3.ProjectOnPlane(direction, slopeHit.normal).normalized;
