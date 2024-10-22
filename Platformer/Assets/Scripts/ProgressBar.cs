@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,27 +8,39 @@ public class ProgressBar : MonoBehaviour
 {
     private Slider slider;
     public float barRemoveSpeed = 1f;
-    public Weapon weapon;
 
+    private bool _isRunning;
+
+
+    private void OnEnable()
+    {
+        BarEventManager.SliderReset += BarEventManager_SliderReset;
+    }
+
+ 
+
+    private void OnDisable()
+    { 
+        BarEventManager.SliderReset -= BarEventManager_SliderReset;
+    }
 
     private void Awake()
     {
         slider = gameObject.GetComponent<Slider>();
     }
-    // Update is called once per frame
     void Update()
     {
-        //If the bullet hits a target
-        if (weapon.hit)
-        {
-            OnTargetHit();
-        }
+        //Reduce the players health each frame
         slider.value -= barRemoveSpeed * Time.deltaTime;
+        if(slider.value <= 0)
+        {
+            //Player is dead
+            Debug.Log("Player is dead");
+        }
     }
 
-    public void OnTargetHit() {
-        //Reset the players health
-        slider.value = slider.maxValue;
-        weapon.hit = false;
-    }
+
+    //Reset the players health
+    private void BarEventManager_SliderReset() => slider.value = slider.maxValue;
+
 }

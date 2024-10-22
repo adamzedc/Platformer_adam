@@ -5,14 +5,8 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    private GameObject gun;
-    private Weapon weapon;
-    private SecretTrigger secretTrigger;
 
-    private void Start() {
-        gun = transform.parent.gameObject;
-        weapon = gun.GetComponent<Weapon>();
-    }
+    private SecretTrigger secretTrigger;
 
     private void OnCollisionEnter(Collision collision){
         if (collision.gameObject.CompareTag("enemy"))
@@ -21,12 +15,16 @@ public class Bullet : MonoBehaviour
             print("hit" + collision.gameObject.name + "!");
             Destroy(collision.gameObject);
             Destroy(gameObject);
-            weapon.hit = true;
+            BarEventManager.OnSliderReset();
         }
-        else if (collision.gameObject.CompareTag("secret")) {
+        else if (collision.gameObject.CompareTag("secret"))
+        {
             secretTrigger = collision.gameObject.GetComponent<SecretTrigger>();
             Destroy(collision.gameObject);
             secretTrigger.OnTargetHit();
+        }
+        else {
+            Destroy(gameObject);
         }
     }
 }

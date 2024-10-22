@@ -11,12 +11,10 @@ public class Weapon : MonoBehaviour
     public float bulletPrefabLifeTime = 3f;
     public PlayerInputActions playerControls;
     public InputAction fire;
-    public bool hit;
 
     void Awake()
     {
         playerControls = new PlayerInputActions();
-        hit = false;
     }
 
     private void OnEnable(){
@@ -31,7 +29,6 @@ public class Weapon : MonoBehaviour
     private void Fire(InputAction.CallbackContext context){
         //Create the bullet
         GameObject bullet = Instantiate(bulletPrefab, bulletSpawn.position, Quaternion.identity);
-        bullet.transform.SetParent(transform);
         bullet.GetComponent<Rigidbody>().AddForce(bulletSpawn.forward.normalized * bulletVelocity, ForceMode.Impulse);
         StartCoroutine(DestroyBulletAfterTime(bullet,bulletPrefabLifeTime));
     }
