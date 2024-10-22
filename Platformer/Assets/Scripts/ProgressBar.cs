@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class ProgressBar : MonoBehaviour
 {
@@ -35,6 +36,7 @@ public class ProgressBar : MonoBehaviour
         if(slider.value <= 0)
         {
             //Player is dead
+            SceneManager.LoadScene("Menu");
             Debug.Log("Player is dead");
         }
     }

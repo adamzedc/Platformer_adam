@@ -375,6 +375,7 @@
 "Assets/Scripts/BarEventManager.cs"
 "Assets/Scripts/BouncePad.cs"
 "Assets/Scripts/Bullet.cs"
+"Assets/Scripts/CircularEnemyMovement.cs"
 "Assets/Scripts/Death.cs"
 "Assets/Scripts/EffectController.cs"
 "Assets/Scripts/EnemyMovement.cs"

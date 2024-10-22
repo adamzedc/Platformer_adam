@@ -11,7 +11,6 @@ public class Bullet : MonoBehaviour
     private void OnCollisionEnter(Collision collision){
         if (collision.gameObject.CompareTag("enemy"))
         {
-            Debug.Log("Bullet Collision");
             print("hit" + collision.gameObject.name + "!");
             Destroy(collision.gameObject);
             Destroy(gameObject);
@@ -22,6 +21,17 @@ public class Bullet : MonoBehaviour
             secretTrigger = collision.gameObject.GetComponent<SecretTrigger>();
             Destroy(collision.gameObject);
             secretTrigger.OnTargetHit();
+        }
+        else if (collision.gameObject.CompareTag("hitbox"))
+        {
+            print("hit" + collision.gameObject.transform.parent.name + "'s hitbox!");
+            if (collision.gameObject.transform.parent != null)
+            {
+                // this will destroy the hitbox's parent
+                Destroy(collision.gameObject.transform.parent.gameObject);
+            }
+            Destroy(gameObject);
+            BarEventManager.OnSliderReset();
         }
         else {
             Destroy(gameObject);
