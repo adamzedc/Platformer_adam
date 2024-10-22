@@ -66,7 +66,6 @@ public class PlayerMovement : MonoBehaviour
     //public LayerMask whatIsBouncePad;
 
     public Transform orientation;
-    private bool slid;
 
     Vector3 moveDirection;
 
@@ -96,7 +95,6 @@ public class PlayerMovement : MonoBehaviour
 
         readyToJump = true;
         readyToDive = true;
-        slid = false;
 
         startYScale = transform.localScale.y;
     }
@@ -109,8 +107,6 @@ public class PlayerMovement : MonoBehaviour
         {
             debugState.text = "Sliding";
             state = MovementState.sliding;
-
-            slid = true;
 
             if (OnSlope() && rb.velocity.y < 0.1f && grounded)
             {
@@ -305,14 +301,26 @@ public class PlayerMovement : MonoBehaviour
         //On Ground
         else if (grounded)
         {
-            rb.AddForce(moveDirection.normalized * moveSpeed * 10f, ForceMode.Force);
+            if(IsOppositeDirectionInput())
+            {
+                rb.AddForce(moveDirection.normalized * moveSpeed * 10f * 0.5f, ForceMode.Force);
+            }
+            else
+            {
+                rb.AddForce(moveDirection.normalized * moveSpeed * 10f, ForceMode.Force);
+            }
             resetCrouch();
         }
 
         //in Air
         else if (!grounded)
         {
-            rb.AddForce(moveDirection.normalized * moveSpeed * 10f * airMultiplier, ForceMode.Force);
+            if (IsOppositeDirectionInput())
+            {
+                rb.AddForce(moveDirection.normalized * moveSpeed * 10f * 0.5f * airMultiplier, ForceMode.Force);
+            }
+            else
+                rb.AddForce(moveDirection.normalized * moveSpeed * 10f * airMultiplier, ForceMode.Force);
         }
 
         rb.useGravity = !OnSlope();
@@ -351,7 +359,6 @@ public class PlayerMovement : MonoBehaviour
         //Reset the speed if the player stops moving
         if (rb.velocity.magnitude <= 3.6 && grounded)
         {
-            Debug.Log("Resetting Speed");
             resetSpeed();
         }
 
@@ -415,6 +422,25 @@ public class PlayerMovement : MonoBehaviour
         desiredMoveSpeed = walkSpeed;
         moveSpeed = walkSpeed;
         StopAllCoroutines();
+    }
+
+    private bool IsOppositeDirectionInput()
+    {
+        //Get the players inpuy
+        Vector2 moveInput = pc.move.ReadValue<Vector2>();
+        Vector3 inputDirection = orientation.forward * moveInput.y + orientation.right * moveInput.x;
+
+        // Normalize the input direction
+        inputDirection.Normalize();
+
+        // Get the current movement direction
+        Vector3 currentDirection = rb.velocity.normalized;
+
+        // Calculate the dot product
+        float dotProduct = Vector3.Dot(currentDirection, inputDirection);
+
+        // If the dot product is negative, the input direction is opposite to the current movement direction
+        return dotProduct < 0;
     }
 
     public bool OnSlope() {

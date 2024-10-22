@@ -47,7 +47,6 @@ public class ObjectsOnTrain : MonoBehaviour
             obj = other.transform.parent.gameObject;
             pm = obj.GetComponent<PlayerMovement>();
             playerSpeed = pm.sprintSpeed;
-            Debug.Log("HELLO SIR");
             objectOnTrain = true;
         }
     }
@@ -69,10 +68,9 @@ public class ObjectsOnTrain : MonoBehaviour
             //If the player is moving in the same direction as the train
             //Then we will give the player a speed boost
             if (dotProduct > similarityThreshold) {
-                Debug.Log("Player is moving in the same direction as the train");
                 AdjustPlayerMoveSpeed();
                 //Reset the speed after a short delay
-                Invoke("ResetPlayerMovement", 0.1f);
+                Invoke(nameof(ResetPlayerMovement), 0.1f);
             }
             objectOnTrain = false;
         }
@@ -82,7 +80,6 @@ public class ObjectsOnTrain : MonoBehaviour
     {
         // Calculate the train's movement since the last frame
         Vector3 trainMovement = rb.position - lastTrainPosition;
-        //Debug.Log(trainMovement/Time.deltaTime);
 
         // Move the player along with the train's movement
         objRb = obj.GetComponent<Rigidbody>();
