@@ -9,16 +9,12 @@ public class ProgressBar : MonoBehaviour
 {
     private Slider slider;
     public float barRemoveSpeed = 1f;
-
     private bool _isRunning;
-
 
     private void OnEnable()
     {
         BarEventManager.SliderReset += BarEventManager_SliderReset;
     }
-
- 
 
     private void OnDisable()
     { 

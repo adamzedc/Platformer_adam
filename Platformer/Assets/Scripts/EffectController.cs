@@ -17,19 +17,17 @@ public class EffectController : MonoBehaviour
     public float minRateMultiplier;
     public float maxRateMultiplier;
 
-
     [Header("Speed of particles")]
     private float speedMultiplier;
     public float minSpeedMultiplier;
     public float maxSpeedMultiplier;
 
-
-    // Start is called before the first frame update
     void Start()
     {
     }
 
-    // Update is called once per frame
+    
+    // update will call this every frame.
     void Update()
     {
         var emission = ps.emission;
@@ -49,7 +47,7 @@ public class EffectController : MonoBehaviour
         }
     }
 
-
+    
     private void changeSpeedMultiplier()
     {
         speedMultiplier = 1+((playerRB.velocity.magnitude-10f) * 0.2f);

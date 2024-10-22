@@ -4,24 +4,24 @@ using UnityEngine;
 
 public class CircularEnemyMovement : MonoBehaviour
 {
-    public float speed = 5f;         // Speed of movement
-    public float radius = 3f;        // Radius of the circular path
+    public float speed = 5f;        
+    public float radius = 3f;  // this is the radius of the circle in which the enemy will move.
 
     private Vector3 startPosition;
 
     void Start()
     {
-        // Save the initial position
+        // initial position.
         startPosition = transform.position;
     }
 
     void Update()
     {
-        // Calculate the x and y positions for circular movement
+        // uses sin and cos to calculate the x and y positions in a circular manner
         float offsetX = Mathf.Cos(Time.time * speed) * radius;
         float offsetY = Mathf.Sin(Time.time * speed) * radius;
 
-        // Apply the circular movement in x and z axes
+        // circular movement applied in the x and y axes.
         transform.position = new Vector3(startPosition.x + offsetX, startPosition.y  + offsetY, startPosition.z);
     }
 }

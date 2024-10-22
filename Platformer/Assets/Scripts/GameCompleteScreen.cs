@@ -4,43 +4,43 @@ using UnityEngine.SceneManagement;
 
 public class LevelCompleteManager : MonoBehaviour
 {
-    public GameObject levelCompleteUI;  // Assign the Canvas/UI that will show the level complete screen.
-    public Image[] stars;  // Array to hold the star images.
-    public Sprite emptyStar;  // Assign the empty star sprite in Inspector.
-    public Sprite fullStar;  // Assign the full star sprite in Inspector.
-    public Text timeText;  // Reference to the text displaying the player's time.
-    public Button mainMenuButton;  // Reference to the Main Menu button.
+    public GameObject levelCompleteUI;  
+    public Image[] stars;  
+    public Sprite emptyStar;  
+    public Sprite fullStar;  
+    public Text timeText;  
+    public Button mainMenuButton;  
 
     private float levelStartTime;
 
     void Start()
     {
-        // Initialize the UI to be hidden
+        
         levelCompleteUI.SetActive(false);
 
-        // Capture the time the level started
+        // time of the start of the level
         levelStartTime = Time.time;
 
-        // Assign the button's onClick listener
+        // button onclick listener.
         mainMenuButton.onClick.AddListener(GoToMainMenu);
     }
 
     public void CompleteLevel()
     {
-        // Calculate the time it took the player to finish
+        // calculation of time taken to finish (current time - start time)
         float timeTaken = Time.time - levelStartTime;
         timeText.text = "You took " + timeTaken.ToString("F2") + " seconds";
 
-        // Show the UI
+        
         levelCompleteUI.SetActive(true);
 
-        // Update stars based on time taken
+        
         UpdateStars(timeTaken);
     }
 
     void UpdateStars(float timeTaken)
     {
-        // Here we assume thresholds for 3 stars, 2 stars, and 1 star
+        // this calculates the amount of stars that will be given to the player for the time they took to complete the level.
         if (timeTaken <= 20)
         {
             SetStars(3);
@@ -61,7 +61,7 @@ public class LevelCompleteManager : MonoBehaviour
 
     void SetStars(int starCount)
     {
-        // Loop through the stars and set full or empty stars
+        // sets the star to either a full star or an empty one based using a for loop.
         for (int i = 0; i < stars.Length; i++)
         {
             if (i < starCount)
@@ -77,7 +77,7 @@ public class LevelCompleteManager : MonoBehaviour
 
     void GoToMainMenu()
     {
-        // Load the Main Menu scene
-        SceneManager.LoadScene("MainMenu");  // Ensure your Main Menu scene is named correctly.
+        
+        SceneManager.LoadScene("MainMenu");  // loads the main menu after you click the main menu button
     }
 }

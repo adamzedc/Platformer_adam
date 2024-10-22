@@ -18,10 +18,6 @@ public class Sliding : MonoBehaviour
     public float slideYScale;
     private float startYScale;
 
-    //public float yToXConversionMultiplier;
-    //private float slideMultiplier;
-    //private float highestMultiplier;
-
     [Header("Input")]
     private Vector2 moveInput;
     private bool slideBuffer;

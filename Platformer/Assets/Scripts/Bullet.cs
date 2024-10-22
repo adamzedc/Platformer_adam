@@ -23,6 +23,7 @@ public class Bullet : MonoBehaviour
         //If we hit a secret
         else if (collision.gameObject.CompareTag("secret"))
         {
+            // this will trigger the secret event.
             secretTrigger = collision.gameObject.GetComponent<SecretTrigger>();
             Destroy(collision.gameObject);
             secretTrigger.OnTargetHit();

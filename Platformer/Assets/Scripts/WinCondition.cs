@@ -14,7 +14,7 @@ public class WinCondition : MonoBehaviour
         if (other.tag == "win")
         {
             winUI.SetActive(true);
-            SceneManager.LoadScene("Menu"); 
+            SceneManager.LoadScene("Menu"); // loads the menu when you win for now. will be a win screen in the full game.
 
         }
     }

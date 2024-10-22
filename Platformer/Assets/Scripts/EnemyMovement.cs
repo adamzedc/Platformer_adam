@@ -12,7 +12,7 @@ public class EnemyMovement : MonoBehaviour
 
     void Start()
     {
-        // Save the initial position
+        // initial position that is pingponged around
         startPosition = transform.position;
     }
 

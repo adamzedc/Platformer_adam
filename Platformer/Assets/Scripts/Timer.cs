@@ -46,7 +46,7 @@ public class Timer : MonoBehaviour
     private void EventManager_TimerReset() => timeToDisplay = timeToStart;
 
 
-    private void Update()
+    private void Update() // this displays the time elapsed during the game.
     {
         if (!_isRunning) return;
 

@@ -20,7 +20,7 @@ public class TrainGroupManager : MonoBehaviour
             }
 
             trainsMoving = true; 
-            Debug.Log("All trains in " + gameObject.name + " are now moving.");
+            
         }
     }
 }

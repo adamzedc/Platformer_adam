@@ -7,16 +7,17 @@ public class MainMenu : MonoBehaviour
 {
     void Start()
     {
-        // Unlock the cursor
+        // cursor is unlocked so you can see it and click buttons on the menu.
         Cursor.lockState = CursorLockMode.None;
-        // Make the cursor visible
         Cursor.visible = true;
     }
-    public void PlayGame(){
+    public void PlayGame(){ 
+        // loads the game.
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
     public void QuitGame(){
+        // quits the game.
         Debug.Log("Quit!");
         Application.Quit();
     }
