@@ -1,4 +1,6 @@
 using UnityEngine.Events;
+
+// Code inspired by - https://www.youtube.com/watch?v=DH2ZxwRBwwg
 public class EventManager
 {
     public static event UnityAction TimerStart;

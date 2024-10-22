@@ -3,7 +3,8 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 
-
+//Code Inspired by - https://www.youtube.com/watch?v=f473C43s8nE&t=1s
+//Code Inspired by - https://www.youtube.com/watch?v=xCxSjgYTw9c&t=423s
 public class PlayerMovement : MonoBehaviour
 {
 
@@ -46,6 +47,9 @@ public class PlayerMovement : MonoBehaviour
     public float crouchSpeed;
     public float crouchYScale;
     private float startYScale;
+    public float diveForce;
+    public float diveCooldown;
+    private bool readyToDive;
 
     [Header("Ground Check")]
     public float playerHeight;
@@ -62,6 +66,7 @@ public class PlayerMovement : MonoBehaviour
     //public LayerMask whatIsBouncePad;
 
     public Transform orientation;
+    private bool slid;
 
     Vector3 moveDirection;
 
@@ -90,6 +95,8 @@ public class PlayerMovement : MonoBehaviour
         pc = GetComponent<PlayerControls>();
 
         readyToJump = true;
+        readyToDive = true;
+        slid = false;
 
         startYScale = transform.localScale.y;
     }
@@ -97,12 +104,13 @@ public class PlayerMovement : MonoBehaviour
 
     private void StateHandler()
     {
-
         //Mode - Sliding
         if (sliding && grounded)
         {
             debugState.text = "Sliding";
             state = MovementState.sliding;
+
+            slid = true;
 
             if (OnSlope() && rb.velocity.y < 0.1f && grounded)
             {
@@ -127,7 +135,7 @@ public class PlayerMovement : MonoBehaviour
             }
         }
         //Mode - Crouching
-        else if (pc.crouch.IsPressed()) 
+        else if (pc.crouch.IsPressed() && !inWater) 
         {
             debugState.text = "Crouching";
             state = MovementState.crouching;
@@ -141,11 +149,11 @@ public class PlayerMovement : MonoBehaviour
             desiredMoveSpeed = sprintSpeed;
         }
         //Mode - Walking
-        else if (grounded)
+        else if (grounded && readyToJump)
         {
             debugState.text = "Walking";
             state = MovementState.walking;
-            desiredMoveSpeed = walkSpeed;
+          
         }
         //Mode - Air
         else
@@ -179,6 +187,7 @@ public class PlayerMovement : MonoBehaviour
 
         lastState = state;
         lastDesiredMoveSpeed = desiredMoveSpeed;
+
     }
 
     private IEnumerator SmoothlyLerpMoveSpeed()
@@ -240,18 +249,11 @@ public class PlayerMovement : MonoBehaviour
         }
 
         //Start crouch
-        if (pc.crouch.IsPressed())
+        if (pc.crouch.WasPressedThisFrame())
         {
-            transform.localScale = new Vector3(transform.localScale.x, crouchYScale, transform.localScale.z);
-
-
-            //Can look to include this code, it will basically stop it from forcing you downwards when you are midair
-            //This effect can be good or bad, depends on the scenario
-            //if (grounded) {
-            rb.AddForce(Vector3.down * 5f, ForceMode.Impulse);
-            //}
+            Crouch();
         }
-
+       
         //Stop Crouching
         if (pc.crouch.WasReleasedThisFrame())
         {
@@ -288,6 +290,7 @@ public class PlayerMovement : MonoBehaviour
         //Calculate the movement direction
         moveDirection = orientation.forward * moveInput.y + orientation.right * moveInput.x;
 
+
         //On slope
         if (OnSlope() && !exitingSlope)
         {
@@ -303,6 +306,7 @@ public class PlayerMovement : MonoBehaviour
         else if (grounded)
         {
             rb.AddForce(moveDirection.normalized * moveSpeed * 10f, ForceMode.Force);
+            resetCrouch();
         }
 
         //in Air
@@ -344,6 +348,13 @@ public class PlayerMovement : MonoBehaviour
 
     void speedControl() {
 
+        //Reset the speed if the player stops moving
+        if (rb.velocity.magnitude <= 3.6 && grounded)
+        {
+            Debug.Log("Resetting Speed");
+            resetSpeed();
+        }
+
         // Limiting speed on a slope
         if (OnSlope() && !exitingSlope)
         {
@@ -379,8 +390,35 @@ public class PlayerMovement : MonoBehaviour
         exitingSlope = false;
     }
 
+    private void Crouch() {
+
+        if (grounded)
+        {
+            transform.localScale = new Vector3(transform.localScale.x, crouchYScale, transform.localScale.z);
+            rb.AddForce(Vector3.down * 10f, ForceMode.Impulse);
+        }
+        else if (readyToDive && !inWater)
+        {
+            readyToDive = false;
+            transform.localScale = new Vector3(transform.localScale.x, crouchYScale, transform.localScale.z);
+            rb.AddForce(Vector3.down * diveForce, ForceMode.Impulse);
+            
+        }
+    }
+    private void resetCrouch() {
+        readyToDive = true;
+    }
+
+    private void resetSpeed()
+    {
+        //If the player starts walking or stops moving then we reset their speed
+        desiredMoveSpeed = walkSpeed;
+        moveSpeed = walkSpeed;
+        StopAllCoroutines();
+    }
+
     public bool OnSlope() {
-        if (Physics.Raycast(transform.position, Vector3.down, out slopeHit, playerHeight * 0.5f + 0.1f))
+        if (Physics.Raycast(transform.position, Vector3.down, out slopeHit, playerHeight * 0.5f + 0.2f))
         {
             float angle = Vector3.Angle(Vector3.up, slopeHit.normal);
             return angle < maxSlopeAngle && angle != 0;
@@ -393,3 +431,4 @@ public class PlayerMovement : MonoBehaviour
         return Vector3.ProjectOnPlane(direction, slopeHit.normal).normalized;
     }
 }
+

@@ -57,14 +57,14 @@ public class ObjectsOnTrain : MonoBehaviour
         if (other.transform.parent.gameObject.CompareTag("player"))
         {
             //Get the direction of both objects
-            Vector3 trainDirection = ((rb.position - lastTrainPosition) / 2).normalized;
+            Vector3 trainDirection = (rb.position - lastTrainPosition).normalized;
             Vector3 playerDirection = (other.transform.position - lastTrainPosition).normalized;
 
             //Calculate the dot product of the two directions
             float dotProduct = Vector3.Dot(trainDirection, playerDirection);
 
             //Set the similarity threshold
-            float similarityThreshold = 0.2f;
+            float similarityThreshold = -0.25f;
 
             //If the player is moving in the same direction as the train
             //Then we will give the player a speed boost
@@ -92,11 +92,22 @@ public class ObjectsOnTrain : MonoBehaviour
     private void AdjustPlayerMoveSpeed()
     {
         //Gives the player a speed boost based on the train's speed
-        Debug.Log("Train Vector Speed: " + (rb.position - lastTrainPosition)/Time.deltaTime);
-        Debug.Log("Train Speed: " + trainSpeed);
+        // Calculate the train's movement vector
+        Vector3 trainMovement = (rb.position - lastTrainPosition) / Time.deltaTime;
 
-        pm.sprintSpeed = playerSpeed + trainSpeed;
-        pm.desiredMoveSpeed = playerSpeed + trainSpeed;
+        // Get the player's Rigidbody component
+        objRb = obj.GetComponent<Rigidbody>();
+
+        // Calculate the boost force by adding the train's movement vector to the player's current velocity
+        Vector3 boostForce = objRb.velocity + trainMovement;
+        boostForce.y = 0;
+
+        //Add a force to the player equal to the train's speed
+        objRb.AddForce(boostForce, ForceMode.VelocityChange);
+
+        //Adjust the player's speed to match the train's speed
+        pm.sprintSpeed = Mathf.Clamp(playerSpeed + trainSpeed,10,20);
+        pm.desiredMoveSpeed = Mathf.Clamp(playerSpeed + trainSpeed,10,20);
     }
 
     private void ResetPlayerMovement()

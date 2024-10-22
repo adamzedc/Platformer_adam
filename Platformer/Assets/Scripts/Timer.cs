@@ -1,6 +1,9 @@
 using System;
 using UnityEngine;
 using TMPro;
+
+
+//Code inspired by - https://www.youtube.com/watch?v=DH2ZxwRBwwg
 public class Timer : MonoBehaviour
 {
     private TMP_Text _timerText;
