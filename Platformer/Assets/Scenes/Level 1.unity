@@ -1127,6 +1127,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1834662925429500962, guid: fbf4cfc2ad4259d47b8d05d950e23665, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2924543857622437670, guid: fbf4cfc2ad4259d47b8d05d950e23665, type: 3}
       propertyPath: m_Name
       value: CircularMovingEnergy
@@ -5985,6 +5989,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1642221884320270392, guid: fbf4cfc2ad4259d47b8d05d950e23665, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1834662925429500962, guid: fbf4cfc2ad4259d47b8d05d950e23665, type: 3}
+      propertyPath: m_IsTrigger
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2924543857622437670, guid: fbf4cfc2ad4259d47b8d05d950e23665, type: 3}
