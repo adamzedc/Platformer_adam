@@ -38,7 +38,7 @@ public class Sliding : MonoBehaviour
         moveInput = pc.move.ReadValue<Vector2>();
 
         //Buffer the slide so that the player can slide the moment they touch the ground
-        if (pc.slide.WasPressedThisFrame()){
+        if (pc.sprint.WasPressedThisFrame()){
             slideBuffer = true;
         }
         //Checking if the user can slide
@@ -50,7 +50,7 @@ public class Sliding : MonoBehaviour
         }
 
         //Player will stop sliding when they press a new input (This allows the user to swap to sprinting or jumping whilst still keeping the speed from sliding)
-        if ((pc.sprint.IsPressed() || pc.jump.WasPressedThisFrame() && pm.sliding)) {
+        if (pc.jump.WasPressedThisFrame() && pm.sliding) {
             StopSlide();
         }
 
@@ -84,29 +84,29 @@ public class Sliding : MonoBehaviour
         //Allows us to slide in any direction
         Vector3 inputDirection = orientation.forward * moveInput.y + orientation.right * moveInput.x;
 
-        //Sliding Normally
-        if (!pm.OnSlope() || rb.velocity.y > -0.1f)
-        {
-            rb.AddForce(inputDirection * (slideForce), ForceMode.Force);
+        ////Sliding Normally
+        //if (!pm.OnSlope() || rb.velocity.y > -0.1f)
+        //{
+        //    rb.AddForce(inputDirection * (slideForce), ForceMode.Force);
 
-            //Count down the timer, when time runs out, stop sliding
-            //Sliding at high speeds (Should slide until speed goes below 12)
-            if (rb.velocity.magnitude < 12)
-            {
-                slideTimer -= Time.deltaTime;
-            }
-            else
-            {
-                //Debug.Log("We are sliding at high speeds : " + rb.velocity.magnitude);
-            }
-        }
+        //    //Count down the timer, when time runs out, stop sliding
+        //    //Sliding at high speeds (Should slide until speed goes below 12)
+        //    if (rb.velocity.magnitude < 12)
+        //    {
+        //        slideTimer -= Time.deltaTime;
+        //    }
+        //    else
+        //    {
+        //        //Debug.Log("We are sliding at high speeds : " + rb.velocity.magnitude);
+        //    }
+        //}
 
         //Sliding down slope
-        else {
+        //else {
             rb.AddForce(pm.GetSlopeMoveDirection(inputDirection) * slideForce, ForceMode.Force);
-        }
+        //}
 
-        if (slideTimer <= 0)
+        if (!pm.OnSlope())
         {
             StopSlide();
         }
@@ -115,6 +115,7 @@ public class Sliding : MonoBehaviour
     private void StopSlide()
     {
         pm.sliding = false;
+        Debug.Log("Stopped Sliding");
         //Resetting scale as we are no longer sliding
         playerObj.localScale = new Vector3(playerObj.localScale.x, startYScale, playerObj.localScale.z);
     }

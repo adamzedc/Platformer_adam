@@ -103,18 +103,14 @@ public class PlayerMovement : MonoBehaviour
     private void StateHandler()
     {
         //Mode - Sliding
-        if (sliding && grounded)
+        if (sliding && OnSlope())
         {
             debugState.text = "Sliding";
             state = MovementState.sliding;
 
-            if (OnSlope() && rb.velocity.y < 0.1f && grounded)
+            if (rb.velocity.y < 0.1f && grounded)
             {
                 desiredMoveSpeed = slideSpeed;
-            }
-            else
-            {
-                desiredMoveSpeed = sprintSpeed;
             }
         }
         //Mode - Falling
@@ -263,7 +259,6 @@ public class PlayerMovement : MonoBehaviour
         MyInput();
         speedControl();
         StateHandler();
-
         if (inWater)
         {
             StopAllCoroutines();
@@ -286,6 +281,11 @@ public class PlayerMovement : MonoBehaviour
         //Calculate the movement direction
         moveDirection = orientation.forward * moveInput.y + orientation.right * moveInput.x;
 
+        float speed = walkSpeed;
+        if(pc.sprint.IsPressed() && !OnSlope())
+        {
+            speed = sprintSpeed;
+        }
 
         //On slope
         if (OnSlope() && !exitingSlope)
@@ -317,12 +317,10 @@ public class PlayerMovement : MonoBehaviour
         else if (!grounded)
         {
             //Reduce the speed if the player is moving in the opposite direction
-            if (IsOppositeDirectionInput())
-            {
-                rb.AddForce(moveDirection.normalized * moveSpeed * 10f * 0.5f * airMultiplier, ForceMode.Force);
-            }
-            else
-                rb.AddForce(moveDirection.normalized * moveSpeed * 10f * airMultiplier, ForceMode.Force);
+         
+                //rb.AddForce(moveDirection.normalized * speed * 10f * 0.5f * airMultiplier, ForceMode.Force);
+         
+                rb.AddForce(moveDirection.normalized * speed * 10f * airMultiplier, ForceMode.Force);
         }
 
         rb.useGravity = !OnSlope();
@@ -332,7 +330,7 @@ public class PlayerMovement : MonoBehaviour
     private void FixedUpdate()
     {
         debugSpeed.text = "Speed : " + rb.velocity.magnitude;
-        sprintSpeed = 10;
+        //sprintSpeed = 10;
 
         //Ground Check
         if (Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + 0.1f, whatIsGround))
@@ -417,7 +415,7 @@ public class PlayerMovement : MonoBehaviour
         readyToDive = true;
     }
 
-    private void resetSpeed()
+    public void resetSpeed()
     {
         //If the player starts walking or stops moving then we reset their speed
         desiredMoveSpeed = walkSpeed;

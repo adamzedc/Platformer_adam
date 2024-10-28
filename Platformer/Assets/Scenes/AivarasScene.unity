@@ -7080,6 +7080,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1691113863}
     - target: {fileID: 7948665524351177484, guid: ec3352d5b8d2cb442997aea6ea97f01a, type: 3}
+      propertyPath: sprintSpeed
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7948665524351177484, guid: ec3352d5b8d2cb442997aea6ea97f01a, type: 3}
+      propertyPath: airMultiplier
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7948665524351177484, guid: ec3352d5b8d2cb442997aea6ea97f01a, type: 3}
       propertyPath: debugGrounded
       value: 
       objectReference: {fileID: 498413551}
@@ -7281,6 +7289,10 @@ PrefabInstance:
       propertyPath: weapon
       value: 
       objectReference: {fileID: 1001568553}
+    - target: {fileID: 7573836418137625407, guid: e2ac093d2c94e7745a588fac61f09757, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7573836418137625407, guid: e2ac093d2c94e7745a588fac61f09757, type: 3}
       propertyPath: barRemoveSpeed
       value: 0.1
